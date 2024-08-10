@@ -1,0 +1,61 @@
+.fade-in {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+  }
+
+  @keyframes toneIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .tone-in {
+    animation: toneIn 0.5s ease-in-out;
+  }
+
+  @keyframes toneOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .tone-out {
+    animation: toneOut 0.5s ease-in-out;
+  }
+
+  @keyframes rollUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .roll-up {
+    animation: rollUp 0.5s ease-in-out;
+  }
+
+  @keyframes rollDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+  
+  .roll-down {
+    animation: rollDown 0.5s ease-in-out;
+  }
+  

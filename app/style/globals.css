@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-modesto font-bold text-8xl leading-none tracking-[0.3em] text-center
+    handheld:text-6xl handheld:tracking-[0.1em];
+  }
+
+  h2 {
+    @apply font-modesto font-bold text-5xl leading-none tracking-widest mb-8 text-center
+    handheld:text-4xl;
+  }
+
+  h3 {
+    @apply font-modesto font-bold text-4xl leading-none tracking-[0.2em] text-center
+    handheld:text-2xl;
+  }
+
+  h4 {
+    /*@apply font-modesto font-bold text-5xl leading-none tracking-[0.2em] mobile:text-4xl;*/
+    @apply font-bold text-xl tracking-widest;
+    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    background-size: cover;
+    color: transparent;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  h5 {
+    @apply text-whiteText font-bold text-2xl leading-none tracking-widest mb-8;
+  }
+
+  h6 {
+    @apply font-bold text-xl tracking-widest;
+  }
+
+  p {
+    font-size: 1.1em;
+    text-align: justify;
+  }
+
+  @media (max-width: 750px) {
+    p {
+      text-align: left;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html,
+body {
+  @apply font-indivisible;
+  @apply text-whiteText;
+  @apply bg-black;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.character-shadow {
+  -moz-box-shadow: inset 0 0 10px 15px #030302;
+  -webkit-box-shadow: inset 0 0 10px 15px #030302;
+  box-shadow: inset 0 0 10px 15px #030302;
+  /* Removes the outline at the edge of the image */
+  background-clip: content-box;
+  padding: 4px;
+}
+/* Makes the classes work with responsive web, for example "mobile:character-shadow-mobile" */
+@layer utilities {  
+  .character-shadow-mobile {
+    -moz-box-shadow: inset 0 0 10px 15px #030302;
+    -webkit-box-shadow: inset 0 0 10px 15px #030302;
+    box-shadow: inset 0 0 10px 15px #030302, inset 0 0 30px 30px #030302;
+    /* Removes the outline at the edge of the image */
+    background-clip: content-box;
+    padding: 4px;
+  }
+}
+.large-character-shadow {
+  -moz-box-shadow: inset 0 0 15px 25px #030302;
+  -webkit-box-shadow: inset 0 0 15px 25px #030302;
+  box-shadow: inset 0 0 15px 25px #030302;
+  /* Removes the outline at the edge of the image */
+  background-clip: content-box;
+  padding: 8px;
+}
+
+
+/* Define custom keyframes for glitch effect */
+@keyframes glitch {
+  2%, 64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+@keyframes glitchTop {
+  2%, 64% {
+    transform: translate(2px, -2px);
+  }
+  4%, 60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+@keyframes glitchBottom {
+  2%, 64% {
+    transform: translate(-2px, 0);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+
+/* Define the glitch effect class */
+.glitchEffect {
+  position: relative;
+  display: inline-block;
+}
+
+.glitchEffect::before,
+.glitchEffect::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glitchEffect::before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.glitchEffect::after {
+  animation: glitchBottom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0, 0 0;
+  }
+  100% {
+    background-position: 200% 0, 0 0;
+  }
+}
+
+.shimmer-animation {
+  animation: shimmer 2s linear infinite;
+}
+
+.scale-content {
+  transition: transform 0.3s ease-in-out;
+}
+
+.relative:hover .scale-content {
+  transform: scale(1.10); /* Adjust the scale value as needed */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
