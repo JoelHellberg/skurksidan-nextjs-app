@@ -61,7 +61,7 @@ const Popup_template: React.FC<Props> = ({ SetCondition, condition, imgSrc, chil
                                     width={450}
                                     height={450}
                                     src={imgSrc}
-                                    alt="Stäng"
+                                    alt=" "
                                     onClick={handleClick}
                                 />
                             </div>

@@ -14,11 +14,13 @@ const CharacterDetails = (props: Props) => {
     const character = characters.characters[character_index]
     const isMobile = useMediaQuery('(max-width: 750px)')
 
+    let splitstory = character.story.split('\n').map(str => <p key={str}><br/>{str}</p>);
+
     return (
         <div className="h-full w-full">
             <div className='m-auto w-4/5 handheld:w-full'>
                 <h2>{character.name + " " + character.surname}</h2>
-                <p>{character.story}</p>
+                {splitstory}
             </div>
         </div>
     );
