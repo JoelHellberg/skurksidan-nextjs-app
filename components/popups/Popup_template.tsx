@@ -90,7 +90,7 @@ const Popup_template: React.FC<Props> = ({ SetCondition, condition, imgSrc, chil
                             )}
                         </div>
 
-                        <div className="h-full px-16 overflow-y-auto">
+                        <div className="h-full px-16 mobile:px-10 overflow-y-auto">
                             {children}
                         </div>
 
