@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import useMediaQuery from '@/hooks/useMediaQuery'
+
 
 type Props = {
     openGameRules: Function
@@ -7,6 +9,7 @@ type Props = {
 
 const GameRules = (props: Props) => {
     function handleClick() { props.openGameRules() }
+    const isMobile = useMediaQuery('(max-width: 1024px)')
 
     return (
         <div className="w-screen">
@@ -35,7 +38,7 @@ const GameRules = (props: Props) => {
 
                 {/* Rotated Image */}
                 <div className="absolute bottom-10 right-10 transform rotate-45 translate-x-1/2 translate-y-1/2">
-                    <div className="relative aspect-[5/7] w-32">
+                    <div className="relative aspect-[5/7] w-32 mobile:w-24">
                         <Image
                             src={"/images/characters/baksida_Idolkort24_25.jpg"}
                             layout="fill"

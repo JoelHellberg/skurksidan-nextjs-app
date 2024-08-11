@@ -1,7 +1,7 @@
 "use client"
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect  } from 'react';
 import Image from 'next/image';
 import { stories } from '@/data/OLD_character_data'
 import { useScrollBlock } from '@/hooks/useScrollBlock';
@@ -9,8 +9,11 @@ import useMediaQuery from '@/hooks/useMediaQuery'
 import Character_details from '@/components/Character_details';
 import Footer from '@/components/Footer'
 import Popup_template from '@/components/popups/Popup_template'
+import DynamicParallax from '@/components/DynamicParallax'
 import Game_rules from '@/components/popups/content/Game_rules';
 import CharacterDetails from '@/components/popups/content/CharacterDetails';
+
+import { debounce } from 'lodash';
 
 
 import Content from './Content';
@@ -52,12 +55,53 @@ export default function Page() {
     SetRenderGameRules(false)
   }
 
-  const pages = isMobile ? 14 : 8
+  const pages = isMobile ? 11.5 : 6.5
+
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [footerPage, setFooterPage] = useState(0);
+
+  const updateFooterPage = debounce(() => {
+    if (footerRef.current) {
+      const footerTop = footerRef.current.getBoundingClientRect().top + window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const calculatedFooterPage = Math.floor(footerTop / viewportHeight);
+      setFooterPage(calculatedFooterPage + 0.5);
+    }
+  }, 300); // Adjust debounce delay as needed
+
+  useLayoutEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      updateFooterPage();
+    });
+
+    if (footerRef.current) {
+      resizeObserver.observe(footerRef.current);
+    }
+
+    const handleFullscreenChange = () => {
+      updateFooterPage();
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    window.addEventListener('resize', updateFooterPage);
+
+    updateFooterPage();
+
+    return () => {
+      if (footerRef.current) {
+        resizeObserver.unobserve(footerRef.current);
+      }
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      window.removeEventListener('resize', updateFooterPage);
+    };
+  }, []);
 
   return (
     <main>
       {/* Group image */}
-      <Parallax pages={14}>
+      <p>{"footerPage: " + footerPage}</p>
+      <p>{"pages: " + pages}</p>
+      <Parallax key={pages} pages={pages}>
         <ParallaxLayer
           offset={0}
           speed={0.1}
@@ -103,7 +147,10 @@ export default function Page() {
             zIndex: '1'
           }}
         />
-        <ParallaxLayer offset={1}> <Content openGameRules={openGameRules} openDetails={openDetails} /> <Footer /></ParallaxLayer>
+        <ParallaxLayer offset={1}> <Content openGameRules={openGameRules} openDetails={openDetails} /> 
+        <Footer />
+        <div ref={footerRef}></div>
+        </ParallaxLayer>
       </Parallax>
       {/* Character Details Box 
       <Character_details

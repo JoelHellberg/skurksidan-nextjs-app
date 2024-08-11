@@ -1,10 +1,11 @@
 'use client'
-
+import { useEffect, useRef, useState } from 'react';
 import Marquee from "react-fast-marquee";
 
 type Props = {}
 
 const Footer = (props: Props) => {
+
   return (
     <div className="text-grey font-cascadia pb-5 bottom-0">
       <p className="text-center mb-2">&copy;Skurkeriet</p>

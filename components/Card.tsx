@@ -33,9 +33,9 @@ const Card = (props: Props) => {
                     className="relative object-cover"
                 />
                 <div className='p-3 z-10 mb-2 '>
-                    <a className='pb-0 text-base glitchEffect' title={character.name}>{character.name}</a>
+                    <a className='pb-0 text-base'>{character.name}</a>
                     <br className='p-0'></br>
-                    <a className='pt-0 text-xs glitchEffect' title={character.surname}>{character.surname}</a>
+                    <a className='pt-0 text-xs'>{character.surname}</a>
                 </div>
             </div>
         </div>
