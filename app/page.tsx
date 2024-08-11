@@ -100,6 +100,7 @@ export default function Page() {
             backgroundImage: 'url(/images/parallax/stones.svg)',
             backgroundSize: 'fill',
             backgroundPosition: 'center',
+            zIndex: '1'
           }}
         />
         <ParallaxLayer offset={1}> <Content openGameRules={openGameRules} openDetails={openDetails} /> <Footer /></ParallaxLayer>
