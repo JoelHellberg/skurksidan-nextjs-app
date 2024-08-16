@@ -96,6 +96,11 @@ export default function Page() {
     };
   }, []);*/}
 
+  const moonSpeed = isMobile ? 1 : 0.1
+  const boatSpeed = isMobile ? 1 : 0.3
+  const stoneSpeed = isMobile ? 1 : 0.5
+  const textSpeed = isMobile ? 1 : 0.4
+
   return (
     <main>
       {/* Group image */}
@@ -104,14 +109,14 @@ export default function Page() {
       <Parallax key={pages} pages={pages}>
         <ParallaxLayer
           offset={0}
-          speed={0.1}
+          speed={moonSpeed}
           style={{
             background: 'linear-gradient(to bottom, #1a1a1a, #000000)',
           }}
         />
         <ParallaxLayer
           offset={0}
-          speed={0.1}
+          speed={moonSpeed}
           style={{
             backgroundImage: 'url(/images/parallax/moon.svg)',
             backgroundSize: 'contain',
@@ -119,13 +124,13 @@ export default function Page() {
           }}
         />
 
-        <ParallaxLayer offset={0.4} speed={0.4}>
+        <ParallaxLayer offset={0.4} speed={textSpeed}>
           <h1 className='w-full mx-auto glitchEffect' title='SKURKERIET'>SKURKERIET</h1>
         </ParallaxLayer>
 
         <ParallaxLayer
           offset={0}
-          speed={0.3}
+          speed={boatSpeed}
           style={{
             backgroundImage: 'url(/images/parallax/boat.svg)',
             backgroundSize: 'contain',
@@ -133,13 +138,13 @@ export default function Page() {
           }}
         />
 
-        <ParallaxLayer offset={0.6} speed={0.4}>
+        <ParallaxLayer offset={0.6} speed={textSpeed}>
           <h3 className='m-auto'>NOLLE-P SKA BLI VÅRT</h3>
         </ParallaxLayer>
 
         <ParallaxLayer
           offset={0.4}
-          speed={0.5}
+          speed={stoneSpeed}
           style={{
             backgroundImage: 'url(/images/parallax/stones.svg)',
             backgroundSize: 'fill',
