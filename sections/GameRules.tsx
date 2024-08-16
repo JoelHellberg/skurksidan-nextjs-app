@@ -13,7 +13,7 @@ const GameRules = (props: Props) => {
 
     return (
         <div className="w-screen">
-            <div className="transition-all ease-in-out duration-500 relative m-auto rounded-md w-2/5 handheld:w-4/5 p-20 
+            <div className="transition-all ease-in-out duration-500 relative m-auto rounded-md w-2/5 handheld:w-4/5 p-20 mobile:p-0 
                   bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] 
                   bg-gray-500 bg-opacity-20 hover:bg-opacity-30 bg-[length:250%_250%,100%_100%] 
                   bg-no-repeat 
@@ -24,7 +24,7 @@ const GameRules = (props: Props) => {
                 {/* Scale content container */}
                 <div className="scale-content">
                     <h2>SPELREGLER</h2>
-                    <div className="m-auto w-3/5">
+                    <div className="m-auto w-3/5 mobile:w-full">
                         <Image
                             src={"/images/group11.svg"}
                             layout="responsive"
