@@ -27,6 +27,15 @@ const cascadia = localFont({
   ],
   variable: '--font-cascadia'
 })
+const sandana = localFont({
+  src: [
+    {
+      path: './fonts/sandana.ttf',
+      weight: '400'
+    }
+  ],
+  variable: '--font-sandana'
+})
 
 export default function RootLayout({
   children,
@@ -36,7 +45,7 @@ export default function RootLayout({
 
   return (
     <html className='overflow-hidden' lang="en">
-      <body className={'w-full min-h-screen flex flex-col overflow-hidden' + `${vinyl.variable} ${cascadia.variable}`}>
+      <body className={'w-full min-h-screen flex flex-col overflow-hidden' + `${vinyl.variable} ${cascadia.variable} ${sandana.variable}`}>
         {children}
       </body>
     </html>

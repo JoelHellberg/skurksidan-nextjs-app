@@ -4,7 +4,7 @@
 
 @layer base {
   h1 {
-    @apply font-modesto font-bold text-8xl leading-none tracking-[0.3em] text-center
+    @apply font-sandana font-bold text-7xl leading-none tracking-[0.3em] text-center
     handheld:text-6xl handheld:tracking-[0.1em];
   }
 
@@ -20,7 +20,7 @@
 
   h4 {
     /*@apply font-modesto font-bold text-5xl leading-none tracking-[0.2em] mobile:text-4xl;*/
-    @apply font-cascadia font-bold text-3xl tracking-widest;
+    @apply font-sandana font-bold text-3xl tracking-widest;
     background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
     background-size: cover;
     color: transparent;
