@@ -142,7 +142,7 @@ const Content = (props: Props) => {
       {/* Card password */}
       <div className='text-center m-auto w-2/3 mobile:w-5/6 pt-20 pb-64 h-full my-16 px-16 mobile:p-8'
         style={divStyle}>
-        <h2 className='text-neutral-700 mobile:text-2xl'>HAR NOLLAN HITTAT ETT LÖSENORD?</h2>
+        <h2 className='text-neutral-700 mobile:text-2xl'>HAR NOLLAN HITTAT EN KOD?</h2>
         <Card_passwords />
       </div>
 
