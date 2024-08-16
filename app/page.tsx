@@ -1,7 +1,7 @@
 "use client"
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
-import { useState, useEffect, useRef, useLayoutEffect  } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Image from 'next/image';
 import { stories } from '@/data/OLD_character_data'
 import { useScrollBlock } from '@/hooks/useScrollBlock';
@@ -13,7 +13,7 @@ import DynamicParallax from '@/components/DynamicParallax'
 import Game_rules from '@/components/popups/content/Game_rules';
 import CharacterDetails from '@/components/popups/content/CharacterDetails';
 
-import { debounce } from 'lodash';
+{/* import { debounce } from 'lodash';*/ }
 
 
 import Content from './Content';
@@ -57,7 +57,7 @@ export default function Page() {
 
   const pages = isMobile ? 11.5 : 6.5
 
-  const footerRef = useRef<HTMLDivElement>(null);
+  {/*const footerRef = useRef<HTMLDivElement>(null);
   const [footerPage, setFooterPage] = useState(0);
 
   const updateFooterPage = debounce(() => {
@@ -94,12 +94,12 @@ export default function Page() {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
       window.removeEventListener('resize', updateFooterPage);
     };
-  }, []);
+  }, []);*/}
 
   return (
     <main>
       {/* Group image */}
-      <p>{"footerPage: " + footerPage}</p>
+      {/*<p>{"footerPage: " + footerPage}</p>*/}
       <p>{"pages: " + pages}</p>
       <Parallax key={pages} pages={pages}>
         <ParallaxLayer
@@ -147,9 +147,9 @@ export default function Page() {
             zIndex: '1'
           }}
         />
-        <ParallaxLayer offset={1}> <Content openGameRules={openGameRules} openDetails={openDetails} /> 
-        <Footer />
-        <div ref={footerRef}></div>
+        <ParallaxLayer offset={1}> <Content openGameRules={openGameRules} openDetails={openDetails} />
+          <Footer />
+          {/*<div ref={footerRef}></div>*/}
         </ParallaxLayer>
       </Parallax>
       {/* Character Details Box 
