@@ -9,7 +9,7 @@
   }
 
   h2 {
-    @apply font-modesto font-bold text-5xl leading-none tracking-widest mb-8 text-center
+    @apply font-sandana font-bold text-5xl leading-none tracking-widest mb-8 pb-8 text-center
     handheld:text-4xl;
   }
 
@@ -20,7 +20,7 @@
 
   h4 {
     /*@apply font-modesto font-bold text-5xl leading-none tracking-[0.2em] mobile:text-4xl;*/
-    @apply font-bold text-xl tracking-widest;
+    @apply font-cascadia font-bold text-3xl tracking-widest;
     background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
     background-size: cover;
     color: transparent;
@@ -48,6 +48,7 @@
   }
 
   a {
+    @apply font-modesto;
     color: inherit;
     text-decoration: none;
   }

@@ -71,6 +71,7 @@ module.exports = {
         indivisible: ['indivisible', 'sans-serif'],
         vinyl: ['var(--font-vinyl)'],
         cascadia: ['var(--font-cascadia)'],
+        sandana: ['var(--font-sandana)'],
       },
       colors: {
         black: '#030302',
