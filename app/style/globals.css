@@ -9,7 +9,7 @@
   }
 
   h2 {
-    @apply font-sandana font-bold text-5xl leading-none tracking-widest mb-8 pb-8 text-center
+    @apply font-sandana font-bold text-5xl leading-none tracking-widest mb-8 pb-8 handheld:mb-0 text-center
     handheld:text-4xl mobile:text-2xl;
   }
 
