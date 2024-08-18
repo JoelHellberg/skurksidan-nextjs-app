@@ -121,9 +121,6 @@ export default function Page() {
 
   return (
     <main>
-      <p>Pages: {pages}</p>
-      <p>Window Height: {windowDimension.winHeight}</p>
-      <p>Footer Position: {footerPosition}</p>
       <Parallax key={pages} pages={pages}>
         <ParallaxLayer
           offset={0}
