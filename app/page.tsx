@@ -1,66 +1,121 @@
-"use client"
+"use client";
+import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
-
-import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Image from 'next/image';
-import { stories } from '@/data/OLD_character_data'
 import { useScrollBlock } from '@/hooks/useScrollBlock';
-import useMediaQuery from '@/hooks/useMediaQuery'
-import Footer from '@/components/Footer'
-import Popup_template from '@/components/popups/Popup_template'
+import useMediaQuery from '@/hooks/useMediaQuery';
+import Footer from '@/components/Footer';
+import Popup_template from '@/components/popups/Popup_template';
 import Game_rules from '@/components/popups/content/Game_rules';
 import CharacterDetails from '@/components/popups/content/CharacterDetails';
-
-
 import Content from './Content';
 
 export default function Page() {
-  const isMobile = useMediaQuery('(max-width: 1024px)')
-
-  // Import the scroll block functions
+  const isMobile = useMediaQuery('(max-width: 1024px)');
   const [blockScroll, allowScroll] = useScrollBlock();
-
-  const [characterDetails, SetCharacterDetails] = useState("regina")   // Set character details placeholder
+  const [characterDetails, SetCharacterDetails] = useState("regina");
   const [popUpImg, SetpopUpImg] = useState("");
   const [renderPopUp, SetRenderPopUp] = useState(false);
-  const [renderDetails, SetRenderDetails] = useState(false);                                                    // Decides whether the character details box should be rendered
+  const [renderDetails, SetRenderDetails] = useState(false);
   const [renderGameRules, SetRenderGameRules] = useState(false);
+  const [pages, setPages] = useState(isMobile ? 11.5 : 7);
+  const [windowDimension, setWindowDimension] = useState({
+    winWidth: window.innerWidth,
+    winHeight: window.innerHeight,
+  });
+  const [footerPosition, setFooterPosition] = useState(0);
 
-  // Called when clicking on a character
-  function openDetails(characterId: string) {
-    SetCharacterDetails(characterId); // Set the character details with useState
-    SetpopUpImg("/images/characters/thom-removebg.png")
-    SetRenderDetails(true);   // Render the details panel
-    openPopUp()
-  }
+  const footerRef = useRef<HTMLDivElement>(null);
 
-  function openGameRules() {
-    SetRenderGameRules(true)
-    openPopUp()
-  }
+  // Function to update window dimensions
+  const updateWindowDimensions = useCallback(() => {
+    setWindowDimension({
+      winWidth: window.innerWidth,
+      winHeight: window.innerHeight,
+    });
+  }, [isMobile]);
 
-  function openPopUp() {
-    SetRenderPopUp(true)
-    blockScroll(); // Block the user from scrolling the background when a Popup window is open
-  }
+  // Debounce handler for resize events
+  const debounceResize = (callback: () => void, delay: number) => {
+    let timeoutId: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(callback, delay);
+    };
+  };
 
-  async function closePopup() {
-    allowScroll();            // Allow scrolling when closing the details panel
-    SetRenderPopUp(false)
-    SetRenderDetails(false);   // Render the details panel
-    SetRenderGameRules(false)
-  }
+  // Effect to handle resizing
+  useEffect(() => {
+    const handleResize = debounceResize(updateWindowDimensions, 200);
+    window.addEventListener('resize', handleResize);
 
-  const pages = isMobile ? 11.5 : 6.5
+    // Initial calculation
+    updateWindowDimensions();
 
-  const moonSpeed = isMobile ? 1 : 0.1
-  const boatSpeed = isMobile ? 1 : 0.3
-  const stoneSpeed = isMobile ? 1 : 0.5
-  const textSpeed = isMobile ? 1 : 0.4
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [updateWindowDimensions]);
+
+  // Layout effect to handle initial footer position calculation
+  useEffect(() => {
+    updateFooterPosition()
+  })
+  const updateFooterPosition = () => {
+    if (footerRef.current) {
+      requestAnimationFrame(() => {
+        if (footerRef.current) {
+          const footerTop = footerRef.current.getBoundingClientRect().top + window.scrollY;
+          const calculatedPages = footerTop / window.innerHeight;
+          setFooterPosition(footerTop);
+          setPages(calculatedPages);
+        }
+      });
+    }
+  };
+  useLayoutEffect(() => {
+    // Run initial calculation
+    updateFooterPosition();
+
+    // Recalculate on resize
+    window.addEventListener('resize', updateFooterPosition);
+
+    return () => {
+      window.removeEventListener('resize', updateFooterPosition);
+    };
+  }, [windowDimension.winHeight]); // Depend on window dimensions
+
+  const openDetails = (characterId: string) => {
+    SetCharacterDetails(characterId);
+    SetpopUpImg("/images/characters/thom-removebg.png");
+    SetRenderDetails(true);
+    openPopUp();
+  };
+
+  const openGameRules = () => {
+    SetRenderGameRules(true);
+    openPopUp();
+  };
+
+  const openPopUp = () => {
+    SetRenderPopUp(true);
+    blockScroll();
+  };
+
+  const closePopup = async () => {
+    allowScroll();
+    SetRenderPopUp(false);
+    SetRenderDetails(false);
+    SetRenderGameRules(false);
+  };
+
+  const moonSpeed = isMobile ? 1 : 0.1;
+  const boatSpeed = isMobile ? 1 : 0.3;
+  const stoneSpeed = isMobile ? 1 : 0.5;
+  const textSpeed = isMobile ? 1 : 0.4;
 
   return (
     <main>
-      {/* Group image */}
       <Parallax key={pages} pages={pages}>
         <ParallaxLayer
           offset={0}
@@ -78,11 +133,9 @@ export default function Page() {
             backgroundPosition: 'center',
           }}
         />
-
         <ParallaxLayer offset={0.4} speed={textSpeed}>
           <h1 className='w-full mx-auto glitchEffect' title='SKURKERIET'>SKURKERIET</h1>
         </ParallaxLayer>
-
         <ParallaxLayer
           offset={0}
           speed={boatSpeed}
@@ -92,11 +145,9 @@ export default function Page() {
             backgroundPosition: 'center',
           }}
         />
-
         <ParallaxLayer offset={0.6} speed={textSpeed}>
           <h3 className='m-auto'>NOLLE-P SKA BLI VÅRT</h3>
         </ParallaxLayer>
-
         <ParallaxLayer
           offset={0.4}
           speed={stoneSpeed}
@@ -104,26 +155,19 @@ export default function Page() {
             backgroundImage: 'url(/images/parallax/stones.svg)',
             backgroundSize: 'fill',
             backgroundPosition: 'center',
-            zIndex: '1'
+            zIndex: '1',
           }}
         />
-        <ParallaxLayer offset={1}> <Content openGameRules={openGameRules} openDetails={openDetails} />
+        <ParallaxLayer offset={1}>
+          <Content openGameRules={openGameRules} openDetails={openDetails} />
           <Footer />
-          {/*<div ref={footerRef}></div>*/}
+          <div ref={footerRef} id="footerRef"></div> {/* Assign the ref to this div */}
         </ParallaxLayer>
       </Parallax>
-      {/* Character Details Box 
-      <Character_details
-        condition={renderDetails}
-        SetCondition={closeDetails}
-        id={characterDetails.id}
-        name={characterDetails.name}
-        story={characterDetails.story}
-        isMobile={isMobile} />*/}
       <Popup_template imgSrc={popUpImg} SetCondition={closePopup} condition={renderPopUp}>
         {renderGameRules && <Game_rules />}
         {renderDetails && <CharacterDetails alias={characterDetails} />}
       </Popup_template>
-    </main >
-  )
+    </main>
+  );
 }
