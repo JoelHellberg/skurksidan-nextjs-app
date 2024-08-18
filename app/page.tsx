@@ -92,7 +92,7 @@ export default function Page() {
 
   const openDetails = (characterId: string) => {
     SetCharacterDetails(characterId);
-    SetpopUpImg("/images/characters/jill-no-bg.png");
+    SetpopUpImg("/images/characters/" + characterId + "-no-bg.png");
     SetRenderDetails(true);
     openPopUp();
   };

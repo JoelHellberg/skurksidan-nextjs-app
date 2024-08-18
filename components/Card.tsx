@@ -26,7 +26,7 @@ const Card = (props: Props) => {
             <div className='absolute inset-0 w-24 h-full bg-black opacity-0 group-hover:opacity-60 -z-10 filter blur-lg top-4 duration-1000' />
             <div className='absolute text-center -inset-2 aspect-[5/7] w-36 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -top-8 flex flex-col justify-end'>
                 <Image
-                    src="/images/characters/jill-no-bg.png"
+                    src={"/images/characters/" + props.alias + "-no-bg.png"}
                     layout="fill"
                     alt="Rectangle 1"
                     sizes="50vw"
