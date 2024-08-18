@@ -74,7 +74,7 @@ module.exports = {
         sandana: ['var(--font-sandana)'],
       },
       colors: {
-        black: '#030302',
+        black: '#000000',
         yellow: '#F9EA38',
         grey: '#2F2F2F',
         cardGrey: '#9c9c9c',
