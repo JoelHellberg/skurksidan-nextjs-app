@@ -59,31 +59,28 @@ export default function Page() {
 
   // Layout effect to handle initial footer position calculation
   useEffect(() => {
-    updateFooterPosition()
-  })
-  const updateFooterPosition = () => {
-    if (footerRef.current) {
-      requestAnimationFrame(() => {
-        if (footerRef.current) {
-          const footerTop = footerRef.current.getBoundingClientRect().top + window.scrollY;
-          const calculatedPages = footerTop / window.innerHeight;
-          setFooterPosition(footerTop);
-          setPages(calculatedPages);
-        }
-      });
-    }
-  };
-  useLayoutEffect(() => {
-    // Run initial calculation
-    updateFooterPosition();
-
-    // Recalculate on resize
-    window.addEventListener('resize', updateFooterPosition);
-
-    return () => {
-      window.removeEventListener('resize', updateFooterPosition);
+    const updateFooterPosition = () => {
+      if (footerRef.current) {
+        requestAnimationFrame(() => {
+          if (footerRef.current) {
+            const footerTop = footerRef.current.getBoundingClientRect().top + window.scrollY;
+            const calculatedPages = footerTop / window.innerHeight;
+            setFooterPosition(footerTop);
+            setPages(calculatedPages);
+          }
+        });
+      }
     };
-  }, [windowDimension.winHeight]); // Depend on window dimensions
+        // Run initial calculation
+        updateFooterPosition();
+
+        // Recalculate on resize
+        window.addEventListener('resize', updateFooterPosition);
+    
+        return () => {
+          window.removeEventListener('resize', updateFooterPosition);
+        };
+  })
 
   const openDetails = (characterId: string) => {
     SetCharacterDetails(characterId);
