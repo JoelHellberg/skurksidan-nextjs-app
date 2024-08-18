@@ -35,7 +35,7 @@ const Game_rules = () => {
                 skulle vinna lika många omgångar var vinner den som har flest använda färdighetspoäng.
             </p>
             <Image
-                src="/images/rules.jpg"
+                src="/images/newRules2.jpg"
                 alt="Regler"
                 width="1200"
                 height="500"

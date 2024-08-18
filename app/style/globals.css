@@ -20,7 +20,7 @@
 
   h4 {
     /*@apply font-modesto font-bold text-5xl leading-none tracking-[0.2em] mobile:text-4xl;*/
-    @apply font-sandana font-bold text-3xl tracking-widest mobile:text-2xl;
+    @apply font-modesto font-bold text-3xl tracking-widest mobile:text-2xl;
     background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
     background-size: cover;
     color: transparent;
