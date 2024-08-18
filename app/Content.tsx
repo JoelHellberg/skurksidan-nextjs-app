@@ -195,7 +195,7 @@ const Content = (props: Props) => {
         </p>
         <div className='flex justify-center pt-10'>
           <Socials_image company='facebook' link='https://www.facebook.com/Skurkeriet' />
-          <Socials_image company='instagram' link='https://www.instagram.com/skurkeriet2324/' />
+          <Socials_image company='instagram' link='https://www.instagram.com/skurkeriet2425/' />
         </div>
       </div>
 
