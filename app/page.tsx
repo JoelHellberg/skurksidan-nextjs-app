@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Image from 'next/image';
 import { useScrollBlock } from '@/hooks/useScrollBlock';
@@ -20,8 +20,8 @@ export default function Page() {
   const [renderGameRules, SetRenderGameRules] = useState(false);
   const [pages, setPages] = useState(isMobile ? 11.5 : 7);
   const [windowDimension, setWindowDimension] = useState({
-    winWidth: window.innerWidth,
-    winHeight: window.innerHeight,
+    winWidth: 0,
+    winHeight: 0,
   });
   const [footerPosition, setFooterPosition] = useState(0);
 
@@ -29,35 +29,40 @@ export default function Page() {
 
   // Function to update window dimensions
   const updateWindowDimensions = useCallback(() => {
-    setWindowDimension({
-      winWidth: window.innerWidth,
-      winHeight: window.innerHeight,
-    });
-  }, [isMobile]);
+    if (typeof window !== 'undefined') {
+      setWindowDimension({
+        winWidth: window.innerWidth,
+        winHeight: window.innerHeight,
+      });
+    }
+  }, []);
 
-  // Debounce handler for resize events
-  const debounceResize = (callback: () => void, delay: number) => {
-    let timeoutId: NodeJS.Timeout;
-    return () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(callback, delay);
+  // Debounced resize handler
+  const handleResize = useCallback(() => {
+    const debounce = (callback: () => void, delay: number) => {
+      let timeoutId: NodeJS.Timeout;
+      return () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(callback, delay);
+      };
     };
-  };
-
-  // Effect to handle resizing
-  useEffect(() => {
-    const handleResize = debounceResize(updateWindowDimensions, 200);
-    window.addEventListener('resize', handleResize);
-
-    // Initial calculation
-    updateWindowDimensions();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    debounce(updateWindowDimensions, 200)();
   }, [updateWindowDimensions]);
 
-  // Layout effect to handle initial footer position calculation
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Initial dimension update
+      updateWindowDimensions();
+
+      // Add event listener for resize
+      window.addEventListener('resize', handleResize);
+    
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, [handleResize, updateWindowDimensions]);
+
   useEffect(() => {
     const updateFooterPosition = () => {
       if (footerRef.current) {
@@ -71,16 +76,19 @@ export default function Page() {
         });
       }
     };
-        // Run initial calculation
-        updateFooterPosition();
 
-        // Recalculate on resize
-        window.addEventListener('resize', updateFooterPosition);
+    if (typeof window !== 'undefined') {
+      // Run initial calculation
+      updateFooterPosition();
+      
+      // Recalculate on resize
+      window.addEventListener('resize', updateFooterPosition);
     
-        return () => {
-          window.removeEventListener('resize', updateFooterPosition);
-        };
-  })
+      return () => {
+        window.removeEventListener('resize', updateFooterPosition);
+      };
+    }
+  }, [windowDimension.winHeight]);
 
   const openDetails = (characterId: string) => {
     SetCharacterDetails(characterId);
