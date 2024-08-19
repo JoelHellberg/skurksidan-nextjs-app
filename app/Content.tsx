@@ -21,7 +21,7 @@ type Props = {
 
 const Content = (props: Props) => {
   function handleClick() { props.openGameRules() }
-  const isHandheld = useMediaQuery('(max-width: 1024px)')
+  const isHandheld = useMediaQuery('(max-width: 1050px)')
   // Conditionally set the height
   const divStyle = {
     backgroundImage: 'url(/images/paperTest.png)',

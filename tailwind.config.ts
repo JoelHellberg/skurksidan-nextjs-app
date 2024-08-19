@@ -89,8 +89,8 @@ module.exports = {
       },
     },
     screens: {
-      desktop: { min: '1024px' },
-      handheld: { max: '1024px'},
+      desktop: { min: '1050px' },
+      handheld: { max: '1050px'},
       mobile: { max: '750px' },
       thin: { max: '340px' },
     },
