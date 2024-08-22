@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Popup_template from '@/components/popups/Popup_template';
 import Game_rules from '@/components/popups/content/Game_rules';
 import CharacterDetails from '@/components/popups/content/CharacterDetails';
+import CharacterMessage from '@/components/popups/content/CharacterMessage';
 import Content from './Content';
 
 export default function Page() {
@@ -18,6 +19,8 @@ export default function Page() {
   const [renderPopUp, SetRenderPopUp] = useState(false);
   const [renderDetails, SetRenderDetails] = useState(false);
   const [renderGameRules, SetRenderGameRules] = useState(false);
+  const [renderCharacterMessage, setRenderCharacterMessage] = useState(false);
+  const [characterMessage, setCharacterMessage] = useState("");
   const [pages, setPages] = useState(isMobile ? 11.5 : 7);
   const [windowDimension, setWindowDimension] = useState({
     winWidth: 0,
@@ -56,7 +59,7 @@ export default function Page() {
 
       // Add event listener for resize
       window.addEventListener('resize', handleResize);
-    
+
       return () => {
         window.removeEventListener('resize', handleResize);
       };
@@ -80,10 +83,10 @@ export default function Page() {
     if (typeof window !== 'undefined') {
       // Run initial calculation
       updateFooterPosition();
-      
+
       // Recalculate on resize
       window.addEventListener('resize', updateFooterPosition);
-    
+
       return () => {
         window.removeEventListener('resize', updateFooterPosition);
       };
@@ -102,6 +105,13 @@ export default function Page() {
     openPopUp();
   };
 
+  const openCharacterMessage = (message: string, characterId: string) => {
+    setCharacterMessage(message)
+    SetpopUpImg("/images/characters/" + characterId + "-no-bg.png");
+    setRenderCharacterMessage(true);
+    openPopUp();
+  };
+
   const openPopUp = () => {
     SetRenderPopUp(true);
     blockScroll();
@@ -112,6 +122,7 @@ export default function Page() {
     SetRenderPopUp(false);
     SetRenderDetails(false);
     SetRenderGameRules(false);
+    setRenderCharacterMessage(false);
   };
 
   const moonSpeed = isMobile ? 1 : 0.1;
@@ -164,7 +175,7 @@ export default function Page() {
           }}
         />
         <ParallaxLayer offset={1}>
-          <Content openGameRules={openGameRules} openDetails={openDetails} />
+          <Content openGameRules={openGameRules} openDetails={openDetails} openCharacterMessage={openCharacterMessage} />
           <Footer />
           <div ref={footerRef} id="footerRef"></div> {/* Assign the ref to this div */}
         </ParallaxLayer>
@@ -172,6 +183,7 @@ export default function Page() {
       <Popup_template imgSrc={popUpImg} SetCondition={closePopup} condition={renderPopUp}>
         {renderGameRules && <Game_rules />}
         {renderDetails && <CharacterDetails alias={characterDetails} />}
+        {renderCharacterMessage && <CharacterMessage message={characterMessage} />}
       </Popup_template>
     </main>
   );

@@ -6,7 +6,11 @@ import { useScrollBlock } from '@/hooks/useScrollBlock';
 import { messages } from '@/data/character_messages'
 import Character_message from "./Character_message";
 
-const Card_passwords = () => {
+type Props = {
+  openCharacterMessage: Function
+}
+
+const Card_passwords = (props: Props) => {
   const [character, SetCharacter] = useState({ name: 'null', password: 'null', message: 'null' })   // Set character message placeholder
   const [password, setPassword] = useState('');
   const [wrongPassword, setWrongPassword] = useState(false);
@@ -76,7 +80,8 @@ const Card_passwords = () => {
       closeMessage();  // Don't open the message popup
     }
     else
-      blockScroll();            // Block the user from scrolling the background when character details is open
+      // blockScroll();            // Block the user from scrolling the background when character details is open
+      props.openCharacterMessage(characterSearch.message, characterSearch.name)
 
   }
 
@@ -158,21 +163,22 @@ const Card_passwords = () => {
           />
         </div>
       ) : wrongPassword ? (
-        <p className="text-center pt-3 text-neutral-700">Testa igen, Nollan...</p>
+        <p className="text-center text-neutral-700 mobile:text-xs">Testa igen, Nollan...</p>
       ) : (
-        <p className="text-center pt-3 text-neutral-700">Testa skriva in det nedan, om Nollan vågar...</p>
+        <p className="text-center text-neutral-700 handheld:pt-0 mobile:text-xs">Testa skriva in det nedan, om Nollan vågar...</p>
       )}
       <input
         onChange={handleChange}
         value={password}
-        className="bg-[#484848] text-whiteText text-xl w-2/6 px-5 py-3 rounded-xl mt-5 focus:outline-none invalid:bg-inherit handheld:w-2/3 mobile:w-5/6"
+        className="bg-[#484848] text-whiteText text-xl w-2/6 px-5 py-3 rounded-xl mt-5 focus:outline-none invalid:bg-inherit 
+        handheld:w-2/3 mobile:w-5/6 mobile:text-sm mobile:py-2"
         type="text" name="password" id="password_input" autoCorrect="off" autoCapitalize="off"
         placeholder="Lösenord.." /><br />
       <button
         onClick={handleClick}
         className="text-2xl font-modesto text-black bg-yellow rounded-xl px-12 py-1 m-auto mt-5 font-bold tracking-widest ease-linear duration-300 
         hover:cursor-pointer hover:shadow-xl hover:scale-105 hover:opacity-80 
-        mobile:px-2 mobile:w-1/2">
+        mobile:px-2 mobile:w-1/2 mobile:text-sm mobile:mt-3">
         {
           password == "IWHBYD" ? (<span>&#128264;</span>) : ("SKICKA")
         }
