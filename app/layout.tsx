@@ -45,6 +45,10 @@ export default function RootLayout({
 
   return (
     <html className='overflow-hidden' lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        {/* You can add other meta tags here as well */}
+      </head>
       <body className={'w-full min-h-screen flex flex-col overflow-hidden' + `${vinyl.variable} ${cascadia.variable} ${sandana.variable}`}>
         {children}
       </body>
