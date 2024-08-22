@@ -20,6 +20,19 @@ const Card_passwords = (props: Props) => {
   // Import the scroll block functions
   const [blockScroll, allowScroll] = useScrollBlock();
 
+  // Focus handling useEffect
+  useEffect(() => {
+    const input = document.getElementById('password_input');
+    input?.addEventListener('focus', (e) => {
+      e.preventDefault(); // Prevent any default action that might cause scroll jump
+    });
+
+    // Cleanup to remove the event listener when the component unmounts
+    return () => {
+      input?.removeEventListener('focus', () => { });
+    };
+  }, []);
+
   // Call the submit function when pressing enter on keyboard
   useEffect(() => {
     const listener = (event: { code: string; preventDefault: () => void; }) => {
