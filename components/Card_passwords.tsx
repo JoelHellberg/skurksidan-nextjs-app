@@ -181,8 +181,6 @@ const Card_passwords = (props: Props) => {
         <p className="text-center text-neutral-700 handheld:pt-0 mobile:text-xs">Testa skriva in det nedan, om Nollan vågar...</p>
       )}
       <input
-        onChange={handleChange}
-        value={password}
         className="bg-[#484848] text-whiteText text-xl w-2/6 px-5 py-3 rounded-xl mt-5 focus:outline-none invalid:bg-inherit 
         handheld:w-2/3 mobile:w-5/6 mobile:text-sm mobile:py-2"
         type="text" name="password" id="password_input" autoCorrect="off" autoCapitalize="off"
