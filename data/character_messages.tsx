@@ -15,7 +15,7 @@ export const messages = [
     name: "Jaques",
     password: "ViKanDansaAndraHållet",
     message:
-      "minion.gif",
+      "jarofdirt.gif",
   },
   {
     name: "Rolph",
