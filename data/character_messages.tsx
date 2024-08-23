@@ -7,7 +7,7 @@ export const messages = [
   },
   {
     name: "Noa",
-    password: "p4ssw0rd123",
+    password: "P4ssw0rd123",
     message:
       "58°35'19.7\"N 16°10'17.5\"E",
   },
@@ -37,7 +37,7 @@ export const messages = [
   },
   {
     name: "Connie",
-    password: "JordigDryckSedanDagEtt",
+    password: "JordigDryckSenDag1",
     message:
       "https://theuselessweb.com/",
   },
@@ -49,7 +49,7 @@ export const messages = [
   },
   {
     name: "Sav",
-    password: "langaintepaprikapulver",
+    password: "LangaIntePaprikaPulver",
     message:
       "https://www.youtube.com/watch?v=eBU2v7FAbMI",
   },
