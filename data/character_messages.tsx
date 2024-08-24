@@ -9,7 +9,7 @@ export const messages = [
     name: "Noa",
     password: "P4ssw0rd123",
     message:
-      "58°35'19.7\"N 16°10'17.5\"E",
+      "(UPPHITTAD) 58°35'19.7\"N 16°10'17.5\"E",
   },
   {
     name: "Jaques",
