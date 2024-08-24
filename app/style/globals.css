@@ -214,3 +214,18 @@ body {
   background: #555;
 }
 
+@media (min-aspect-ratio: 13/9) {
+  /* Adjust layout or styles for wide screens */
+  body, html {
+    /* Example: Force the body to a specific height */
+    height: 100vh;
+  }
+
+  #password_input {
+    /* Example: Adjust the input field styling */
+    max-width: 50%;
+  }
+
+  /* You can adjust other elements as needed */
+}
+

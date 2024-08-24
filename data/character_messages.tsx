@@ -43,7 +43,7 @@ export const messages = [
   },
   {
     name: "Maddy",
-    password: "Tvåkronorkort",
+    password: "TvåKronorKort",
     message:
       "https://dino-chrome.com/sv",
   },
