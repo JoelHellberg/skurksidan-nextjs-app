@@ -1,0 +1,10 @@
+import Roles from '@/components/Roles';
+
+export default function Page() {
+  return (
+    <main className='pt-14 bg-[#000000] h-screen overflow-y-auto'>
+      {/* Render the roles */}
+      <Roles />
+    </main >
+  )
+}

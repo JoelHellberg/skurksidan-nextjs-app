@@ -10,8 +10,17 @@ import Game_rules from '@/components/popups/content/Game_rules';
 import CharacterDetails from '@/components/popups/content/CharacterDetails';
 import CharacterMessage from '@/components/popups/content/CharacterMessage';
 import Content from './Content';
+import { useSearchParams, redirect } from 'next/navigation'
 
 export default function Page() {
+
+  // Send user to the application page if entering the page for the first time
+  const searchParams = useSearchParams()
+  const redir = searchParams.get("redir");
+  if (!redir) {
+    redirect("/application");
+  }
+
   const isMobile = useMediaQuery('(max-width: 1024px)');
   const [blockScroll, allowScroll] = useScrollBlock();
   const [characterDetails, SetCharacterDetails] = useState("regina");
