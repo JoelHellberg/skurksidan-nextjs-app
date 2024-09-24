@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Image from 'next/image';
 import { useScrollBlock } from '@/hooks/useScrollBlock';
@@ -15,15 +15,14 @@ import { useSearchParams, redirect } from 'next/navigation'
 export default function Page() {
 
   // Send user to the application page if entering the page for the first time
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
+  function Redirect() {  
+    const searchParams = useSearchParams()
     const redir = searchParams.get("redir");
-
     if (!redir) {
       redirect("/application");
-    }
-  }, [searchParams]);
+  }
+  return <></>
+}
 
   const isMobile = useMediaQuery('(max-width: 1024px)');
   const [blockScroll, allowScroll] = useScrollBlock();
@@ -145,6 +144,9 @@ export default function Page() {
 
   return (
     <main>
+      <Suspense>
+        <Redirect />
+      </Suspense>
       <Parallax key={pages} pages={pages}>
         <ParallaxLayer
           offset={0}
