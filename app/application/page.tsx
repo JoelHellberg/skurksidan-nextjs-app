@@ -1,6 +1,7 @@
 "use client"
 import Image from 'next/image';
 import Roles from '@/components/Roles';
+import Countdown from '@/components/Countdown';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
@@ -73,7 +74,7 @@ export default function Page() {
 
       {/* Render the roles */}
       <Roles />
-
+      <Countdown />
     </main >
   )
 }
