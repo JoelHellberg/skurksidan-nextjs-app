@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
 
 export default function Page() {
-  const countDownDate = new Date("Oct 21 2023 00:00:00").getTime();
+  const countDownDate = new Date("Oct 18 2024 00:00:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState({ d: "0", h: "00", m: "00", s: "00" })
 

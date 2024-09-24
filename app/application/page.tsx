@@ -4,7 +4,7 @@ import Roles from '@/components/Roles';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
-  const deadlineTime = new Date("Oct 21, 2028 00:00:00").getTime();
+  const deadlineTime = new Date("Oct 18, 2024 00:00:00").getTime();
   const [deadline, setDeadline] = useState(false);
 
   // Update date every second to trigger deadline

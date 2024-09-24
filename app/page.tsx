@@ -15,11 +15,15 @@ import { useSearchParams, redirect } from 'next/navigation'
 export default function Page() {
 
   // Send user to the application page if entering the page for the first time
-  const searchParams = useSearchParams()
-  const redir = searchParams.get("redir");
-  if (!redir) {
-    redirect("/application");
-  }
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const redir = searchParams.get("redir");
+
+    if (!redir) {
+      redirect("/application");
+    }
+  }, [searchParams]);
 
   const isMobile = useMediaQuery('(max-width: 1024px)');
   const [blockScroll, allowScroll] = useScrollBlock();
