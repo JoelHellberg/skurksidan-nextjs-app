@@ -2,9 +2,11 @@
 import Image from 'next/image';
 import Roles from '@/components/Roles';
 import Countdown from '@/components/Countdown';
+import useMediaQuery from '@/hooks/useMediaQuery'
 import { useEffect, useState } from 'react';
 
 export default function Page() {
+  const isHandheld = useMediaQuery('(max-width: 1050px)')
   const deadlineTime = new Date("Oct 18, 2024 00:00:00").getTime();
   const [deadline, setDeadline] = useState(false);
 
@@ -26,7 +28,7 @@ export default function Page() {
       {/* Group image */}
       <div className='flex flex-col-reverse items-left w-full h-screen bg-cover bg-left-bottom'>
         {!deadline ? (
-          <div className='text-whiteText h-full w-full pl-[18%] pt-[10%] mobile:px-[5%]'>
+          <div className='text-whiteText h-full w-full pl-[18%] pt-[5%] mobile:px-[5%] handheld:pt-0'>
             <div className='fadeIn1 relative h-1/3 w-4/5 mobile:w-full'>
               <Image
                 src={'/images/darkness.jpg'}
@@ -42,7 +44,12 @@ export default function Page() {
                 Nedan finner du beskrivningar av de poster som erbjuds.&nbsp;
                 <a href='/?redir=true' className='inline-block font-semibold'> Klicka här för att gå tillbaka till skurkeriet.se</a>
               </p>
-              <a href='https://docs.google.com/forms/d/e/1FAIpQLSdMqKqnuWUcQkBT6GY4iDXrmDStPdkoGyr1z2s-FlnxqVgB7g/viewform?usp=sf_link'>
+              {isHandheld ? (<></>) : (<br />)}
+              <br/>
+              <p className='fadeIn2 text-xl text-left mobile:text-xs bg-yellow text-black p-1 font-modestoExpanded'>
+              Söket stänger på Mörkrets Natt
+              </p>              
+              <a href='https://docs.google.com/forms/d/e/1FAIpQLScCXtuL9oUByfKkVDWrRx0YbMfem3Pn40ywCb2GSRjrP0Q6Gg/viewform?usp=sf_link'>
                 <button
                   className='fadeIn3 bg-transparent rounded-3xl px-12 py-3 m-auto mt-10 font-modestoExpanded text-3xl text-yellow border-yellow border-2 ease-linear duration-500
                   hover:scale-110 mobile:px-10 mobile:text-2xl'
@@ -50,7 +57,7 @@ export default function Page() {
                   SÖK
                 </button>
               </a><br />
-              <a href='https://docs.google.com/forms/d/e/1FAIpQLSePqwOmINrGqntq1Ugwh-y00eTYywFqFYTVgU6mSAIkZsTltA/viewform?usp=sf_link'>
+              <a href='https://docs.google.com/forms/d/e/1FAIpQLSeCv3T1SfBWKnW90ckudvP2VZe945gOsZWhlQ6Yt9p-dQDp6A/viewform?usp=sf_link'>
                 <button
                   className='fadeIn4 bg-transparent rounded-3xl px-12 py-3 m-auto mt-5 font-modestoExpanded text-3xl text-yellow border-yellow border-2 ease-linear duration-500
                   hover:scale-110 mobile:px-10 mobile:text-2xl'
@@ -74,7 +81,9 @@ export default function Page() {
 
       {/* Render the roles */}
       <Roles />
+      {!isHandheld ? (
       <Countdown />
+    ) : (<></>)}
     </main >
   )
 }
