@@ -76,7 +76,7 @@ export default function Page() {
         </div>
 
         <Image
-          src="/images/qr.png"
+          src="/images/skurkkod.png"
           alt="QR Code"
           width="400"
           height="400"

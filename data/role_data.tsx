@@ -13,7 +13,7 @@ export const roles = [
     role: "Vice General, Logistikansvarig och Sekreterare",
     role2: "Tjallare",
     text:
-      "Som Logistikansvarig i Skurkeriet är det ditt ansvar att till exempel boka salar, förbereda protokoll och ordna med schemaläggning. Din roll som Sekreterare för Skurkeriet är en del av Vice posten, så det är viktigt att du kan skriva tydliga och välstrukturerade protokoll för att övriga i phadderiet ska veta vad som har bestämts. Som Vice General för skurkeriet är du Generalens högra hand. Kan Generalen inte medverka är det du som tar över. Det är viktigt att ha bra kontakt med Generalen och strukturera upp arbetet så det underlättar för både dig och Generalen. Precis som Generalen kommer du som Vice General att ansvara för en tvärgrupp när planeringen inför nolle-p drar igång samt vara med i Generals-tvärgruppen.",
+      "Som Vice General för skurkeriet är du Generalens högra hand. Kan Generalen inte medverka är det du som tar över. Det är viktigt att ha bra kontakt med Generalen och strukturera upp arbetet så det underlättar för både dig och Generalen. Precis som Generalen kommer du som Vice General att ansvara för en tvärgrupp när planeringen inför nolle-p drar igång samt vara med i Generals-tvärgruppen. Den andra delen av posten är att vara logistikansvarig i Skurkeriet. Som logistikansvarig är det ditt ansvar att till exempel boka salar, förbereda protokoll och ordna med schemaläggning. Din roll som Sekreterare för Skurkeriet är en del av Vice posten, så det är viktigt att du kan skriva tydliga och välstrukturerade protokoll för att övriga i phadderiet ska veta vad som har bestämts.",
   },
   {
     id: "frida",
