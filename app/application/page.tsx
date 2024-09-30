@@ -46,7 +46,7 @@ export default function Page() {
               </p>
               {isHandheld ? (<></>) : (<br />)}
               <br/>
-              {\*<p className='fadeIn2 text-xl text-left mobile:text-xs bg-yellow text-black p-1 font-modestoExpanded'>
+              {/*<p className='fadeIn2 text-xl text-left mobile:text-xs bg-yellow text-black p-1 font-modestoExpanded'>
               Söket stänger på Mörkrets Natt
               </p>*/}              
               <a href='https://docs.google.com/forms/d/e/1FAIpQLScCXtuL9oUByfKkVDWrRx0YbMfem3Pn40ywCb2GSRjrP0Q6Gg/viewform?usp=sf_link'>
