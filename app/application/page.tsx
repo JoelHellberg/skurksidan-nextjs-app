@@ -46,9 +46,9 @@ export default function Page() {
               </p>
               {isHandheld ? (<></>) : (<br />)}
               <br/>
-              <p className='fadeIn2 text-xl text-left mobile:text-xs bg-yellow text-black p-1 font-modestoExpanded'>
+              {\*<p className='fadeIn2 text-xl text-left mobile:text-xs bg-yellow text-black p-1 font-modestoExpanded'>
               Söket stänger på Mörkrets Natt
-              </p>              
+              </p>*/}              
               <a href='https://docs.google.com/forms/d/e/1FAIpQLScCXtuL9oUByfKkVDWrRx0YbMfem3Pn40ywCb2GSRjrP0Q6Gg/viewform?usp=sf_link'>
                 <button
                   className='fadeIn3 bg-transparent rounded-3xl px-12 py-3 m-auto mt-10 font-modestoExpanded text-3xl text-yellow border-yellow border-2 ease-linear duration-500
