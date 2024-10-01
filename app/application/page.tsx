@@ -54,17 +54,17 @@ export default function Page() {
                   className='fadeIn3 bg-transparent rounded-3xl px-12 py-3 m-auto mt-10 font-modestoExpanded text-3xl text-yellow border-yellow border-2 ease-linear duration-500
                   hover:scale-110 mobile:px-10 mobile:text-2xl'
                 >
-                  SÖK
+                  SÖK ELLER NOMINERA
                 </button>
               </a><br />
-              <a href='https://docs.google.com/forms/d/e/1FAIpQLSeCv3T1SfBWKnW90ckudvP2VZe945gOsZWhlQ6Yt9p-dQDp6A/viewform?usp=sf_link'>
+              {/*<a href='https://docs.google.com/forms/d/e/1FAIpQLSeCv3T1SfBWKnW90ckudvP2VZe945gOsZWhlQ6Yt9p-dQDp6A/viewform?usp=sf_link'>
                 <button
                   className='fadeIn4 bg-transparent rounded-3xl px-12 py-3 m-auto mt-5 font-modestoExpanded text-3xl text-yellow border-yellow border-2 ease-linear duration-500
                   hover:scale-110 mobile:px-10 mobile:text-2xl'
                 >
                   NOMINERA
                 </button>
-              </a>
+              </a>*/}
             </div>
           </div>
         ) : (
