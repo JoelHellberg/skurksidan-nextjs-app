@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 export default function Page() {
   const isHandheld = useMediaQuery('(max-width: 1050px)')
-  const deadlineTime = new Date("Oct 18, 2024 00:00:00").getTime();
+  const deadlineTime = new Date("Oct 20, 2024 00:00:00").getTime();
   const [deadline, setDeadline] = useState(false);
 
   // Update date every second to trigger deadline
