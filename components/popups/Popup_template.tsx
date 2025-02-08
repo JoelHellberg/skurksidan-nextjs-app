@@ -2,8 +2,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import Image from "next/image";
 import closeIcon from "/icons/close.svg"
 import arrowIcon from "/icons/arrow.svg"
-import { characters } from "@/data/character_data";
-import { Children, useRef, ReactNode, useEffect, useState } from "react";
+import { useRef, ReactNode, useEffect, useState } from "react";
 
 interface Props {
     SetCondition: () => void;

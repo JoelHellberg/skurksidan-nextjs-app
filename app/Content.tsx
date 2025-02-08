@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Character from '@/components/Character';
 import Socials_image from '@/components/Socials_image';
 import Sponsor from '@/components/Sponsor';
 import Card_passwords from '@/components/Card_passwords';
@@ -7,11 +6,6 @@ import Card from '@/components/Card';
 import CardPhone from '@/components/CardPhone';
 import FadeInSection from '@/components/FadeInSection';
 import useMediaQuery from '@/hooks/useMediaQuery'
-
-import Characters from '@/sections/Characters'; // Import the new component
-import GameRules from '@/sections/GameRules'; // Import the new component
-
-
 
 
 type Props = {
@@ -32,7 +26,7 @@ const Content = (props: Props) => {
   };
   return (
     <div>
-      {/* History */}
+      {/* Start of [History] */}
       <div className="flex flex-col justify-center items-center text-center m-auto w-3/5 pt-20 pb-20 bg-black h-screen handheld:w-3/5 handheld:h-auto mobile:w-4/5">
         <FadeInSection>
           <h2>HISTORIEN OM SKURKERIET</h2>
@@ -55,9 +49,10 @@ const Content = (props: Props) => {
           </p>
         </FadeInSection>
       </div>
+      {/* End of [History] */}
 
 
-      {/* Characters */}
+      {/* Start of [Characters] */}
       <div>
         <div className='w-screen justify-center text-center'>
           <h4>Klicka på ett kort</h4>
@@ -65,6 +60,7 @@ const Content = (props: Props) => {
 
         {isHandheld ? (
           <div>
+            {/* Start of [Phone display] */}
             <div className='handheld:w-full handheld:m-auto handheld:grid handheld:grid-cols-2 mobile:grid-cols-1 handheld:gap-4'>
               <CardPhone alias='Bree' openDetails={props.openDetails} />
               <CardPhone alias='Connie' openDetails={props.openDetails} />
@@ -80,10 +76,11 @@ const Content = (props: Props) => {
             <div className='handheld:w-1/2 mobile:w-full handheld:m-auto'>
               <CardPhone alias='Rolph' openDetails={props.openDetails} />
             </div>
+            {/* End of [Phone display] */}
           </div>
         ) : (
           <div>
-            {/* Characters */}
+            {/* Start of [Desktop display] */}
             <div className='relative w-screen desktop:h-screen flex justify-center items-center'>
 
               {/* Background Image */}
@@ -127,9 +124,11 @@ const Content = (props: Props) => {
                 </div>
               </div>
             </div>
+            {/* End of [Desktop display] */}
           </div>
         )}
       </div>
+      {/* End of [Characters] */}
 
 
 
